@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu:22.04
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND="noninteractive"
 ENV JAVA_VERSION="11"
@@ -67,3 +67,17 @@ RUN curl -o flutter.tar.xz $FLUTTER_URL \
   && yes "y" | flutter doctor --android-licenses \
   && flutter doctor \
   && flutter update-packages
+## Tools For Extra Libraries
+RUN apt-get update && apt-get install -y \
+    clang cmake ninja-build pkg-config \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN export CHROME_EXECUTABLE=/usr/bin/chromium-browser
+
+
+
+COPY app/ /app/
+WORKDIR /app
+RUN flutter pub get
+
+
