@@ -1,8 +1,21 @@
 services:
     ubuntu:
-        build: .
-        container_name: ubuntu_practice
+        build: ./app/
+        container_name: flutter_app
         stdin_open: true # Equivalent to -i in docker run
         tty: true # Equivalent to -t in docker run, allocates a pseudo-TTY
+        ports:
+            - "8080:8080"
         volumes:
             - ./app/:/app/
+    tf-dev:
+        build:
+            context: ./awsinfra/
+            args:
+                TERRAFORM_VERSION: "1.13.3"
+                INSTALL_AZURE_CLI: "NO"
+                INSTALL_AWS_CLI: "YES"
+        container_name: terraform_env
+        volumes:
+            - ./awsinfra/iac/:/iac
+        working_dir: /iac/

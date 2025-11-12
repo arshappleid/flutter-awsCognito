@@ -40,7 +40,6 @@ class _MyAppState extends State<MyApp> {
         fields:[
           SignUpFormField.name(),
           SignUpFormField.email(),
-          SignUpFormField.username(),
           SignUpFormField.password(),
           SignUpFormField.passwordConfirmation(),
         ]
@@ -48,7 +47,7 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         builder: Authenticator.builder(),
         home: const Scaffold(
-          body: Center(q
+          body: Center(
             child: Text('You are logged in!'),
           ),
         ),

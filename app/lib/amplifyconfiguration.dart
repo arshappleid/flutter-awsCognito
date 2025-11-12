@@ -9,9 +9,9 @@ const amplifyconfig = ''' {
         },
         "CognitoUserPool": {
           "Default": {
-            "PoolId": "[COGNITO USER POOL ID]",
-            "AppClientId": "[COGNITO USER POOL APP CLIENT ID]",
-            "Region": "[REGION]"
+              "PoolId": "[COGNITO USER POOL ID]",
+              "AppClientId": "[COGNITO USER POOL APP CLIENT ID]",
+              "Region": "[REGION]"
           }
         },
         "Auth": {
